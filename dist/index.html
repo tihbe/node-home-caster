@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>Home caster</title>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+	function submitNewUrl() {
+		var data = {
+			url: document.getElementById("url").value,
+			playonce: document.getElementById("playonce").checked
+		}
+		socket.emit('addSong', data);
+		document.getElementById("playonce").checked = false;
+		document.getElementById("url").value = "";
+	}
+</script>
+</head>
+<body>
+<div id="main">
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
