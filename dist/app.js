@@ -19083,20 +19083,60 @@ module.exports = AddASongElement;
 var React = require("react");
 var ReactDOM = require("react-dom");
 var AddASongElement = require("./addASong.jsx");
+var Store = require("./store.jsx");
 
 var ApplicationIndex = React.createClass({
   displayName: "ApplicationIndex",
 
   socket: window.io(),
+
+  componentWillMount: function componentWillMount() {
+    socket.on('storeInventory', function (inventory) {
+      console.log(inventory);
+    });
+  },
+
   render: function render() {
     return React.createElement(
       "div",
       null,
-      React.createElement(AddASongElement, { socket: this.socket })
+      React.createElement(AddASongElement, { socket: this.socket }),
+      React.createElement(Store, { socket: this.socket })
     );
   }
 });
 
 ReactDOM.render(React.createElement(ApplicationIndex, null), document.getElementById("main"));
 
-},{"./addASong.jsx":159,"react":158,"react-dom":2}]},{},[160]);
+},{"./addASong.jsx":159,"./store.jsx":161,"react":158,"react-dom":2}],161:[function(require,module,exports){
+"use strict";
+
+var React = require("react");
+
+var AddASongElement = React.createClass({
+  displayName: "AddASongElement",
+
+  propTypes: {
+    socket: React.PropTypes.object.isRequired
+  },
+
+  componentWillMount: function componentWillMount() {
+    console.log("component will load");
+  },
+
+  getInitialState: function getInitialState() {
+    return {};
+  },
+
+  render: function render() {
+    return React.createElement(
+      "div",
+      null,
+      "HELLO INVENTORY"
+    );
+  }
+});
+
+module.exports = AddASongElement;
+
+},{"react":158}]},{},[160]);

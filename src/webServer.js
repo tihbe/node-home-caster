@@ -15,6 +15,7 @@ io.on('connection', function(socket) {
       }
     }
   });
+  socket.emit('storeInventory', store.getInventory());
 });
 
 app.get('/', function(req, res) {

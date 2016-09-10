@@ -54,7 +54,12 @@ var getNext = function() {
 	return null;
 }
 
+var getInventory = function() {
+	return inventory;
+}
+
 module.exports = {
 	getNext: getNext,
-	addSong: addSong
+	addSong: addSong,
+	getInventory: getInventory
 }
